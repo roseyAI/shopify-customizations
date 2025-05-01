@@ -1,3 +1,4 @@
+
 # **📩 Shopify Fix: Add "Full Name" to a Newsletter Form (Prestige Theme)**
 
 ## 🧩 Problem:
@@ -13,11 +14,31 @@ I kept the single “Full Name” input on the front end, and used JavaScript to
 
 ## 🛠 How I did it (Prestige Theme) 
 
- 1. Added a new input to the form:
-> {%- render 'input', name: 'contact[full_name]', label: 'Full Name',
-> type: 'text', autocomplete: 'name' -%}
+ 1. Added a new input to the form. Went to newsletter.liquid and located this block:
+```<div class="form-row">
+  {%- assign input_label = 'general.newsletter.email' | t -%}
+  {%- render 'input', name: 'contact[email]', label: input_label, label_hidden: true, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
+  {%- render 'button', type: 'submit', content: section.settings.button_text -%}
+</div>
+```
+2. Replaced it with this: 
+```
+<div class="form-row">
+  {%- assign name_label = 'Full Name' -%}
+  {%- render 'input', name: 'contact[full_name]', label: name_label, label_hidden: true, type: 'text', autocomplete: 'name' -%}
+</div>
 
- 2. Inserted this script at the bottom of the newsletter section (before {% schema %}):
+<div class="form-row">
+  {%- assign input_label = 'general.newsletter.email' | t -%}
+  {%- render 'input', name: 'contact[email]', label: input_label, label_hidden: true, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
+</div>
+
+<div class="form-row">
+  {%- render 'button', type: 'submit', content: section.settings.button_text -%}
+</div>
+```
+
+ 3. Inserted this script at the bottom of the newsletter section (before {% schema %}):
 
 ```
 <script>
