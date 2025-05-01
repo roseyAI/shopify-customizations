@@ -7,9 +7,9 @@ When I added a custom Full Name field using contact[full_name], it looked great 
 
 Turns out, Shopify ignores unrecognized form fields, including contact[full_name].
 
-## ☑️ Solution:
+## ✅ Solution:
 
-✅ Solution I kept the single “Full Name” input on the front end, and used JavaScript to split the name into first and last just before the form submits — so Shopify stores it correctly.
+I kept the single “Full Name” input on the front end, and used JavaScript to split the name into first and last just before the form submits — so Shopify stores it correctly.
 
 ## 🛠 How I did it (Prestige Theme) 
 
