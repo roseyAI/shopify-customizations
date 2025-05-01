@@ -15,7 +15,8 @@ I kept the single “Full Name” input on the front end, and used JavaScript to
 ## 🛠 How I did it (Prestige Theme) 
 
  1. Added a new input to the form. Went to newsletter.liquid and located this block:
-```<div class="form-row">
+```
+<div class="form-row">
   {%- assign input_label = 'general.newsletter.email' | t -%}
   {%- render 'input', name: 'contact[email]', label: input_label, label_hidden: true, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
   {%- render 'button', type: 'submit', content: section.settings.button_text -%}
